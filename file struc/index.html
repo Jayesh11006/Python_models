@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Organizer</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Video Organizer</h1>
+    <div id="video-list">
+        <!-- Video list will be populated here -->
+    </div>
+    <div id="categories">
+        <h2>Categories</h2>
+        <div class="category" onclick="moveToCategory('Topic1')">Topic1</div>
+        <div class="category" onclick="moveToCategory('Topic2')">Topic2</div>
+        <div class="category" onclick="moveToCategory('Topic3')">Topic3</div>
+    </div>
+
+    <!-- Your JavaScript code for interaction -->
+    <script>
+        // Example function to move video to a category using AJAX
+        function moveToCategory(category) {
+            const selectedVideoName = 'video1.mp4'; // Example video name
+            const data = {
+                videoName: selectedVideoName,
+                category: category
+            };
+
+            fetch('/move-video', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                // Update UI or take further action based on response
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error occurred. Please try again.');
+            });
+        }
+    </script>
+</body>
+</html>
