@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #content {
+            width: 80%;
+            height: 80%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">Welcome to the Home Page!</div>
+    <button class="button" onclick="alert('Button 1 clicked!')">Button 1</button>
+    <button class="button" onclick="alert('Button 2 clicked!')">Button 2</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        socket.on('hand_data', function(data) {
+            console.log('Hand Data:', data);
+        });
+    </script>
+</body>
+</html>
