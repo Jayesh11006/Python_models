@@ -1,0 +1,26 @@
+<!-- templates/index.html -->
+
+<html>
+<head>
+    <title>Game System Requirements Prediction</title>
+</head>
+<body>
+    <h2>Game System Requirements Prediction</h2>
+    <form action="/predict" method="post">
+        <label>Genre:</label>
+        <input type="text" name="Genre"><br><br>
+        <label>Platform:</label>
+        <input type="text" name="Platform"><br><br>
+        <label>Critic Score:</label>
+        <input type="text" name="Critic_Score"><br><br>
+        <label>User Score:</label>
+        <input type="text" name="User_Score"><br><br>
+        <label>Global Sales:</label>
+        <input type="text" name="Global_Sales"><br><br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Recommendation</title>
+
+    <style>
+
+        /* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.form-container {
+    margin-top: 50px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+h3 {
+    color: #4CAF50;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Game Recommendation</h2>
+        <div class="form-container">
+            <form action="/predict" method="post">
+                <label for="memory">Memory (GB):</label>
+                <input type="number" name="memory" id="memory" required><br><br>
+                <label for="graphics_card">Graphics Card:</label>
+                <select name="graphics_card" id="graphics_card" required>
+                    <option value="NVIDIA GeForce GTX 980">NVIDIA GeForce GTX 980</option>
+                    <option value="NVIDIA GeForce GTX 960">NVIDIA GeForce GTX 960</option>
+                    <option value="NVIDIA GeForce GTX 970">NVIDIA GeForce GTX 970</option>
+                    <option value="Intel HD 4000">Intel HD 4000</option>
+                </select><br><br>
+                <label for="os">Operating System:</label>
+                <select name="os" id="os" required>
+                    <option value="Windows 10">Windows 10</option>
+                    <option value="Windows 10 64-bit">Windows 10 64-bit</option>
+                    <option value="Windows 10 64-Bit">Windows 10 64-Bit</option>
+                    <option value="Windows 7/8/10 64-bit">Windows 7/8/10 64-bit</option>
+                    <option value="Windows 7 64-bit">Windows 7 64-bit</option>
+                </select><br><br>
+                <input type="submit" value="Recommend">
+            </form>
+            {% if prediction %}
+                <h3>Recommended Game: {{ prediction }}</h3>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
